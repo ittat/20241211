@@ -2,9 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Tiempos;
+  src: url("/tiempos-headline-light.woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("/Inter-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("/Inter-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("/Inter-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("/Inter-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --sans: Inter, Segoe UI, Helvetica Neue, sans-serif;
+  --serif: Tiempos, serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +54,97 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: var(--serif); */
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.btn1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  line-height: normal;
+  white-space: nowrap;
+  margin: 0px;
+  padding: 10px 12px;
+  width: 100%;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+
+  @apply shadow;
+}
+
+.btn-primary {
+  @apply btn1 bg-[#ff612f] text-white;
+}
+
+.btn-secondary {
+  @apply btn1 bg-[#000000] text-white;
+}
+
+.pdf-page canvas {
+  width: 100% !important;
+  height: unset !important;
+  object-fit: contain;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hide-desktop {
+  display: none;
+}
+
+.hide-mobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .hide-desktop {
+    display: block;
+  }
 }
