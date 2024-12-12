@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import useAppStore from "../app.store";
+import useAppStore from "@/app/app.store";
 import PDFUpLoad from "./PDFUpLoad";
 
 const PDFViewer = dynamic(() => import("./PDFViewer"),{ ssr: false })

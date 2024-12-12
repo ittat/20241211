@@ -3,8 +3,10 @@ import LanguageSwitcher from "../LanguageSwitcher";
 import { useState } from "react";
 import { cn } from "@/app/utils";
 import Link from "next/link";
+import { useIntl } from "react-intl";
 
 export const PhoneMenu = () => {
+  const intl = useIntl();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -33,13 +35,21 @@ export const PhoneMenu = () => {
         )}
       >
         <div className="flex flex-col p-[10px] [&_a]:p-[10px] [&_a]:text-[15px] [&_a]:font-medium">
-          <Link href="/tools/pricing">Pricing</Link>
-          <Link href="/tools/chrome-extension">Chrome extension</Link>
-          <Link href="/tools/use-cases">Use cases</Link>
+          <Link href="/tools/pricing">
+            {intl.formatMessage({ id: "Pricing" })}
+          </Link>
+          <Link href="/tools/chrome-extension">
+            {intl.formatMessage({ id: "Chrome extension" })}
+          </Link>
+          <Link href="/tools/use-cases">
+            {intl.formatMessage({ id: "Use cases" })}
+          </Link>
           <div className="p-0 sm:px-2">
             <LanguageSwitcher />
           </div>
-          <Link href="/tools/auth/sign-in">Get started →</Link>
+          <Link href="/tools/auth/sign-in">
+            {intl.formatMessage({ id: "Get started →" })}
+          </Link>
         </div>
       </div>
     </>

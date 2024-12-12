@@ -1,6 +1,11 @@
+import Link from "next/link";
 import { InstagramSvg, TikTokSvg, TwitterSVG, YouTubeSVG } from "./Svg";
+// import {  useIntl } from "react-intl";
+import { IntlShape } from "@formatjs/intl";
 
-function Footer() {
+function Footer(props: { intl: IntlShape }) {
+  const { intl } = props;
+
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -11,8 +16,9 @@ function Footer() {
           <div className="space-y-8">
             <img className="h-7" src="/favicon.ico" alt="PDF.ai logo" />
             <div className="text-sm leading-6 text-gray-600">
-              Chat with any PDF: ask questions, get summaries, find information,
-              and more.
+              {intl.formatMessage({
+                id: "Chat with any PDF: ask questions, get summaries, find information, and more.",
+              })}
             </div>
             <div className="flex space-x-6">
               <a
@@ -20,7 +26,9 @@ function Footer() {
                 className="text-gray-400 hover:text-gray-500"
                 target="_blank"
               >
-                <span className="sr-only">TikTok</span>
+                <span className="sr-only">
+                  {intl.formatMessage({ id: "TikTok" })}
+                </span>
                 <TikTokSvg />
               </a>
               <a
@@ -28,7 +36,9 @@ function Footer() {
                 className="text-gray-400 hover:text-gray-500"
                 target="_blank"
               >
-                <span className="sr-only">Instagram</span>
+                <span className="sr-only">
+                  {intl.formatMessage({ id: "Instagram" })}
+                </span>
                 <InstagramSvg />
               </a>
               <a
@@ -36,7 +46,9 @@ function Footer() {
                 className="text-gray-400 hover:text-gray-500"
                 target="_blank"
               >
-                <span className="sr-only">Twitter</span>
+                <span className="sr-only">
+                  {intl.formatMessage({ id: "Twitter" })}
+                </span>
                 <TwitterSVG />
               </a>
               <a
@@ -44,7 +56,9 @@ function Footer() {
                 className="text-gray-400 hover:text-gray-500"
                 target="_blank"
               >
-                <span className="sr-only">YouTube</span>
+                <span className="sr-only">
+                  {intl.formatMessage({ id: "YouTube" })}
+                </span>
                 <YouTubeSVG />
               </a>
             </div>
@@ -53,78 +67,78 @@ function Footer() {
             <div className="md:grid md:grid-cols-3 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  Products
+                   {intl.formatMessage({ id: "Products"})}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4 list-none p-0">
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/use-cases"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Use cases
-                    </a>
+                      {intl.formatMessage({ id: "Use cases" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/chrome-extension"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Chrome extension
-                    </a>
+                      {intl.formatMessage({ id: "Chrome extension" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
                     <a
                       href="https://api.pdf.ai/"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      API docs
+                      {intl.formatMessage({ id: "API docs" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/pricing"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Pricing
-                    </a>
+                      {intl.formatMessage({ id: "Pricing" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/tutorials"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Video tutorials
-                    </a>
+                      {intl.formatMessage({ id: "Video tutorials" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/resources"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Resources
-                    </a>
+                      {intl.formatMessage({ id: "Resources" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/blog"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Blog
-                    </a>
+                      {intl.formatMessage({ id: "Blog" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/faq"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      FAQ
-                    </a>
+                      {intl.formatMessage({ id: "FAQ" })}
+                    </Link>
                   </li>
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  We also built
+                  {intl.formatMessage({ id: "We also built" })}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4 list-none p-0">
                   <li className="p-0 m-0">
@@ -132,7 +146,7 @@ function Footer() {
                       href="https://pdf.ai/tools/resume-ai-scanner"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Resume AI Scanner
+                      {intl.formatMessage({ id: "Resume AI Scanner" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -140,7 +154,7 @@ function Footer() {
                       href="https://pdf.ai/tools/invoice-ai-scanner"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Invoice AI Scanner
+                      {intl.formatMessage({ id: "Invoice AI Scanner" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -148,7 +162,7 @@ function Footer() {
                       href="https://pdf.ai/tools/quiz-ai-generator"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      AI Quiz Generator
+                      {intl.formatMessage({ id: "AI Quiz Generator" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -156,7 +170,7 @@ function Footer() {
                       href="https://quickyai.com"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      QuickyAI
+                      {intl.formatMessage({ id: "QuickyAI" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -164,7 +178,7 @@ function Footer() {
                       href="https://docsium.com"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Docsium
+                      {intl.formatMessage({ id: "Docsium" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -172,7 +186,7 @@ function Footer() {
                       href="https://pdf.ai/gpts"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      PDF GPTs
+                      {intl.formatMessage({ id: "PDF GPTs" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -180,7 +194,7 @@ function Footer() {
                       href="https://pdfgen.com"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      PDF AI generator
+                      {intl.formatMessage({ id: "PDF AI generator" })}
                     </a>
                   </li>
                   <li className="p-0 m-0">
@@ -188,55 +202,55 @@ function Footer() {
                       href="https://pdf.ai/tools"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Other PDF tools
+                      {intl.formatMessage({ id: "Other PDF tools" })}
                     </a>
                   </li>
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  Company
+                  {intl.formatMessage({ id: "Company" })}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4 list-none p-0">
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/compare/chatpdf-alternative"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      PDF.ai vs ChatPDF
-                    </a>
+                      {intl.formatMessage({ id: "PDF.ai vs ChatPDF" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/compare/adobe-acrobat-reader-alternative"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      PDF.ai vs Acrobat Reader
-                    </a>
+                      {intl.formatMessage({ id: "PDF.ai vs Acrobat Reader" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/privacy-policy"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Legal
-                    </a>
+                      {intl.formatMessage({ id: "Legal" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/affiliate-program"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Affiliate program 💵
-                    </a>
+                      {intl.formatMessage({ id: "Affiliate program 💵" })}
+                    </Link>
                   </li>
                   <li className="p-0 m-0">
-                    <a
+                    <Link
                       href="/investor"
                       className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                     >
-                      Investor
-                    </a>
+                      {intl.formatMessage({ id: "Investor" })}
+                    </Link>
                   </li>
                 </ul>
               </div>

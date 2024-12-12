@@ -1,7 +1,7 @@
 import { Page } from "react-pdf";
 import { RotateSVG } from "./Svg";
 import { useCallback, useEffect } from "react";
-import useAppStore from "../app.store";
+import useAppStore from "@/app/app.store";
 import React from "react";
 
 const PDFPage = (props: { pageNumber: number; width?: number }) => {

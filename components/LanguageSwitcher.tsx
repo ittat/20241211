@@ -1,3 +1,8 @@
+"use client";
+import { useIntl } from "react-intl";
+import { useRouter } from 'next/navigation';
+import { useMemo } from "react";
+
 const lng_list = [
   {
     lng: "EN",
@@ -52,6 +57,29 @@ const lng_list = [
 ];
 
 function LanguageSwitcher() {
+  const intl = useIntl();
+  const router = useRouter();
+  // const currentPathname = usePathname();
+  // const currentLocale = useCurrentLocale(i18nConfig);
+
+  const selectLng = useMemo(()=>{
+    return lng_list.find(i=>i.lng == intl.locale.toUpperCase())
+  },[])
+  
+
+  const handleChange = (lng:string) => {
+    const newLocale = lng.toLocaleLowerCase();
+    // set cookie for next-i18n-router
+    const days = 30;
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    const expires = date.toUTCString();
+    document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
+    router.replace('/' + newLocale);
+    router.refresh();
+  };
+
+
   return (
     <div
       className="relative inline-block language-switcher dropdown"
@@ -64,12 +92,12 @@ function LanguageSwitcher() {
       >
         <span>
           <img
-            src="https://hatscripts.github.io/circle-flags/flags/gb.svg"
-            alt="English"
+            src={selectLng?.icon}
+            alt={selectLng?.name}
             className="w-6 h-6 rounded-full"
           />
         </span>
-        <span className="font-medium">EN</span>
+        <span className="font-medium">{selectLng?.lng}</span>
       </div>
 
       <ul
@@ -82,7 +110,8 @@ function LanguageSwitcher() {
               key={index}
               className="flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 my-0"
             >
-              <div className="flex items-center gap-4 w-full">
+              {/* <Link href={`/${item.lng.toLocaleLowerCase()}`}> */}
+              <div className="flex items-center gap-4 w-full" onClick={() => handleChange(item.lng)}>
                 <img
                   src={item.icon}
                   alt={item.name}
@@ -90,6 +119,8 @@ function LanguageSwitcher() {
                 />
                 <span className="text-gray-900 text-base">{item.name}</span>
               </div>
+              {/* </Link> */}
+            
             </li>
           );
         })}

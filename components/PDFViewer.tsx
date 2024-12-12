@@ -5,7 +5,8 @@ import { pdfjs, Document } from "react-pdf";
 // import "react-pdf/dist/esm/Page/TextLayer.css";
 import PDFPage from "./PDFPage";
 import { ZoomInSVG, ZoomOutSVG } from "./Svg";
-import useAppStore from "../app.store";
+import useAppStore from "@/app/app.store";
+import { useIntl } from "react-intl";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -18,6 +19,7 @@ const options = {
 };
 
 function PDFViewer() {
+  const intl = useIntl();
   const loading = useAppStore((state) => state.loading);
   const file = useAppStore((state) => state.file);
   const pages = useAppStore((state) => state.pages);
@@ -46,19 +48,19 @@ function PDFViewer() {
       {!loading ? (
         <div className="flex justify-center items-center space-x-3 selecto-ignore w-[350px] m-auto">
           <button className="btn-primary" onClick={doRotateAll}>
-            Rotate all
+            {intl.formatMessage({id:"Rotate all"})}
           </button>
           <button
             className="btn-secondary tooltip"
-            data-tip="Remove this PDF and select a new one"
+            data-tip= {intl.formatMessage({id:"tips.Remove"})}
             onClick={clearFile}
           >
-            Remove PDF
+              {intl.formatMessage({id:"Remove PDF"})}
           </button>
 
           <button
             className="tooltip bg-[#ff612f] shadow rounded-full p-2 flex items-center justify-center hover:scale-105 grow-0 shrink-0 disabled:opacity-50 !bg-white"
-            data-tip="Zoom in"
+            data-tip={intl.formatMessage({id:"tips.ZoomIn"})}
             onClick={doZoomIn}
             disabled={!canZoomIn}
           >
@@ -66,7 +68,7 @@ function PDFViewer() {
           </button>
           <button
             className="tooltip bg-[#ff612f] shadow rounded-full p-2 flex items-center justify-center hover:scale-105 grow-0 shrink-0 disabled:opacity-50 !bg-white"
-            data-tip="Zoom out"
+            data-tip={intl.formatMessage({id:"tips.ZoomOut"})}
             onClick={doZoomOut}
             disabled={!canZommOut}
           >
@@ -97,10 +99,11 @@ function PDFViewer() {
         <div className="flex flex-col justify-center items-center space-y-3 selecto-ignore  w-[100px] m-auto">
           <button
             className="btn-primary tooltip"
-            data-tip="Split and download PDF"
+            data-tip={intl.formatMessage({id:"tips.Download"})}
             onClick={onDownloadBtnClick}
           >
-            Download
+            {intl.formatMessage({id:"Download"})}
+            
           </button>
         </div>
       ) : null}

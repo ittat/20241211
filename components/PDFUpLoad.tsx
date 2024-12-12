@@ -1,12 +1,15 @@
 "use client";
 
 import { ChangeEvent } from "react";
-import useAppStore from "../app.store";
+import useAppStore from "@/app/app.store";
 import { UpdloadSVG } from "./Svg";
+import { useIntl } from "react-intl";
 
 const PDFUpLoad = () => {
+  const intl = useIntl();
+  
+  
   const setFile = useAppStore((state) => state.setFile);
-
 
   // 处理上传的pdf
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +29,6 @@ const PDFUpLoad = () => {
     if (file) {
       setFile(file);
     }
-
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -53,7 +55,7 @@ const PDFUpLoad = () => {
         <div className="cursor-pointer flex flex-col items-center space-y-3">
           <UpdloadSVG />
           <p className="pointer-events-none font-medium text-sm leading-6 pointer opacity-75">
-            Click to upload or drag and drop
+            {intl.formatMessage({ id: "Click to upload or drag and drop" })}
           </p>
         </div>
       </label>
