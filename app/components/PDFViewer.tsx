@@ -1,15 +1,11 @@
-import { useState } from "react";
-import { ChangeEvent, useCallback } from "react";
+"use client";
 
-import { pdfjs, Document, Page } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { pdfjs, Document } from "react-pdf";
+// import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 // import "react-pdf/dist/esm/Page/TextLayer.css";
-import { useResizeObserver } from "@wojtekmaj/react-hooks";
-import type { PDFDocumentProxy } from "pdfjs-dist";
 import PDFPage from "./PDFPage";
 import { ZoomInSVG, ZoomOutSVG } from "./Svg";
 import useAppStore from "../app.store";
-import { PDFDocument } from "pdf-lib";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -21,13 +17,7 @@ const options = {
   standardFontDataUrl: "/standard_fonts/",
 };
 
-// const maxWidth = 800;
-
-// const resizeObserverOptions = {};
-
 function PDFViewer() {
-  // const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
-  // const [containerWidth, setContainerWidth] = useState<number>();
   const loading = useAppStore((state) => state.loading);
   const file = useAppStore((state) => state.file);
   const pages = useAppStore((state) => state.pages);
@@ -42,19 +32,8 @@ function PDFViewer() {
     (state) => state.onDocumentLoadSuccess
   );
 
-  // const onResize = useCallback<ResizeObserverCallback>((entries) => {
-  //   const [entry] = entries;
-
-  //   if (entry) {
-  //     setContainerWidth(entry.contentRect.width);
-  //   }
-  // }, []);
-
-  // useResizeObserver(containerRef, resizeObserverOptions, onResize);
-
   const onDownloadBtnClick = async () => {
     if (!file) return;
-
     useAppStore.getState().onDownload();
   };
 

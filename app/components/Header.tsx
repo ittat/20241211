@@ -1,4 +1,4 @@
-import LanguageSwitcher from "./LanguageSwitcher";
+import Link from "next/link";
 import { PCMenu } from "./Menu/PCMenu";
 import { PhoneMenu } from "./Menu/PhoneMenu";
 import { LogoSVG } from "./Svg";
@@ -9,13 +9,13 @@ function Header() {
     
       <div className="flex justify-between items-center  w-full">
         <div className="p-[10px]">
-          <a
+          <Link
             href="/"
             className="flex items-center font-bold p-[10px] text-[20px]"
           >
             <LogoSVG />
             PDF.ai
-          </a>
+          </Link>
         </div>
 
         <PCMenu />

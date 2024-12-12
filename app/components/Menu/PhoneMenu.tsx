@@ -1,8 +1,8 @@
 "use client";
-import ReactDOM from "react-dom";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useState } from "react";
 import { cn } from "@/app/utils";
+import Link from "next/link";
 
 export const PhoneMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,13 +33,13 @@ export const PhoneMenu = () => {
         )}
       >
         <div className="flex flex-col p-[10px] [&_a]:p-[10px] [&_a]:text-[15px] [&_a]:font-medium">
-          <a href="/tools/pricing">Pricing</a>
-          <a href="/tools/chrome-extension">Chrome extension</a>
-          <a href="/tools/use-cases">Use cases</a>
+          <Link href="/tools/pricing">Pricing</Link>
+          <Link href="/tools/chrome-extension">Chrome extension</Link>
+          <Link href="/tools/use-cases">Use cases</Link>
           <div className="p-0 sm:px-2">
             <LanguageSwitcher />
           </div>
-          <a href="/tools/auth/sign-in">Get started →</a>
+          <Link href="/tools/auth/sign-in">Get started →</Link>
         </div>
       </div>
     </>

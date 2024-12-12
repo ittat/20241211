@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent } from "react";
-import PDFViewer from "./PDFViewer";
 import useAppStore from "../app.store";
 import { UpdloadSVG } from "./Svg";
 
